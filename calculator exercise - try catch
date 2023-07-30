@@ -1,0 +1,206 @@
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.lang.*;
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner scan = new Scanner(System.in);
+
+        ArrayList<Integer> arr = new ArrayList<>();
+        try{
+        while (true) {
+
+            System.out.println("Chose from the menu \n" + "Enter 1 to addition the numbers\n" +
+                    "\n" +
+                    "Enter 2 to subtraction the numbers\n" +
+                    "\n" +
+                    "Enter 3 to multiplication the numbers\n" +
+                    "\n" +
+                    "Enter 4 to division the numbers\n" +
+                    "\n" +
+                    "Enter 5 to modulus the numbers\n" +
+                    "\n" +
+                    "Enter 6 to find minimum number\n" +
+                    "\n" +
+                    "Enter 7 to find maximum number\n" +
+                    "\n" +
+                    "Enter 8 to find the average of numbers\n" +
+                    "\n" +
+                    "Enter 9 to print the last result in calculator\n" +
+                    "\n" +
+                    "Enter 10 to print the list of all results in calculator\n" +
+                    "\n" +
+                    "Enter 0 to stop");
+
+            int menu = scan.nextInt();
+            switch (menu) {
+                case 1:
+                    System.out.println("enter two numbers:");
+                    int a = scan.nextInt();
+                    int b = scan.nextInt();
+                    arr.add(sum(a, b));
+                    System.out.println("the addition    is:" + sum(a, b));
+
+                    break;
+                case 2:
+                    System.out.println("enter two numbers:");
+                    a = scan.nextInt();
+                    b = scan.nextInt();
+                    arr.add(sub(a, b));
+                    System.out.println("the subtraction   is:" + sub(a, b));
+
+                    break;
+                case 3:
+                    System.out.println("enter two numbers:");
+                    a = scan.nextInt();
+                    b = scan.nextInt();
+                    arr.add(mult(a, b));
+                    System.out.println("the multiplication  is:" + mult(a, b));
+
+                    break;
+                case 4:
+                    System.out.println("enter two numbers:");
+                    a = scan.nextInt();
+                    b = scan.nextInt();
+                    arr.add(div(a, b));
+                    System.out.println("the division  is:" + div(a, b));
+
+                    break;
+                case 5:
+                    System.out.println("enter two numbers:");
+                    a = scan.nextInt();
+                    b = scan.nextInt();
+                    arr.add(mod(a, b));
+                    System.out.println("the MOD is:" + mod(a, b));
+                    break;
+                case 6:
+                    System.out.println("enter two numbers:");
+                    a = scan.nextInt();
+                    b = scan.nextInt();
+                    arr.add(min(a, b));
+                    System.out.println("the MIN is:" + min(a, b));
+
+                    break;
+                case 7:
+                    System.out.println("enter two numbers:");
+                    a = scan.nextInt();
+                    b = scan.nextInt();
+                    arr.add(max(a, b));
+                    System.out.println("the Max is:" + max(a, b));
+
+                    break;
+                case 8:
+                    System.out.println("enter two numbers:");
+                    a = scan.nextInt();
+                    b = scan.nextInt();
+                    arr.add(avg(a, b));
+                    System.out.println("the AVG is:" + avg(a, b));
+
+                    break;
+                case 9:
+
+                    System.out.println(arr.get(arr.size() - 1));
+
+                    break;
+                case 10:
+                    for (int n : arr) {
+                        System.out.println(n);
+                    }
+                    break;
+
+
+                case 11:
+                    System.exit(0);
+
+            }}}catch (InputMismatchException in){
+            System.out.println("invalid entry");
+        }catch (ArrayIndexOutOfBoundsException ar1){
+            System.out.println(ar1.getMessage());
+        }catch (ArithmeticException mth){
+            System.out.println("entry is invalid,divide by zero");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    public static int sum(int a, int b) {
+
+        return (a + b);
+
+
+    }
+
+    public static int sub(int a, int b) {
+
+
+        return (a - b);
+
+
+    }
+
+    public static int mult(int a, int b) {
+
+
+        return (a * b);
+
+
+    }
+
+    public static int div(int a, int b) {
+
+
+        return (a / b);
+
+
+    }
+
+    public static int mod(int a, int b) {
+
+
+        return (a % b);
+
+
+    }
+
+    public static int min(int a, int b) {
+
+        if (a < b) {
+            return (a);
+        } else {
+            return (b);
+        }
+
+
+    }
+
+    public static int max(int a, int b) {
+
+        if (b > a) {
+            return (b);
+        } else {
+            return (a);
+        }
+
+    }
+
+    public static int avg(int a, int b) {
+
+        int avg = a + b / 2;
+        return avg;
+
+
+    }
+
+
+
+
+}
+
+
+
