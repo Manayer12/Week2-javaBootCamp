@@ -1,0 +1,88 @@
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+
+public static void main(String[] args) {
+    try {
+
+
+    int[] arrEl = new int[0];
+
+
+    while (true){
+
+
+    System.out.println("please chose from the menu starting by 1 :)");
+    String option=("1.Accept elements of an array\n" +
+            "\n" +
+            "2.Display elements of an array\n" +
+            "\n" +
+            "3.Search the element within array\n" +
+            "\n" +
+            "4.Sort the array\n" +
+            "\n" +
+            "5.To Stop");
+        System.out.println(option);
+
+    Scanner scan = new Scanner(System.in);
+    int menu = scan.nextInt();
+
+    switch (menu) {
+        case 1:
+            int a ;
+            
+            System.out.println(" enter how many element you want:");
+            a = scan.nextInt();
+             arrEl = new int[a];
+            System.out.println("enter the array element:");
+            for (int i = 0; i < a ;i++) {
+                 arrEl[i] = scan.nextInt();
+            }
+            break;
+           case 2:
+
+
+                    System.out.println("the Array elements "+Arrays.toString(arrEl));
+
+            break;
+
+
+        case 3:
+                    int b;
+                    System.out.print("Enter the element you want to find:");
+                    b = scan.nextInt();
+                    for (int i :arrEl) {
+                        if (b == i) {
+                            System.out.println("the number you search about in the Array" );
+                        } else {
+                             System.out.println("it is not in the Array");
+break;
+                        }
+
+                    }
+            break;
+
+                    case 4:
+
+                    for (int n:arrEl)
+                        {
+                            Arrays.sort(arrEl);
+
+                        }
+                    System.out.println("Sorted Array:" +  Arrays.toString(arrEl));
+                        break;
+
+                case 5:
+                            System.exit(0);
+
+
+     }}}catch (InputMismatchException in){
+        System.out.println("not a valid input");
+    }catch (ArrayIndexOutOfBoundsException ar){
+        System.out.println(ar.getMessage());
+    }catch (Exception e){
+        System.out.println("something went wrong");
+    }
+}}
