@@ -1,0 +1,200 @@
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+public class Main {
+    public static void main(String[] args) {
+
+     Circle c1=new Circle("black",true,3);
+     c1.getArea();
+     c1.getPerimeter();
+     System.out.println();
+     Rectangle r1=new Rectangle("blue",false,2,5);
+     r1.getArea();
+     r1.getPerimeter();
+     System.out.println();
+     Square s1=new Square("white",true,5);
+     s1.getArea();
+     s1.getPerimeter();
+
+
+    }
+
+}
+
+---------------------------------------------
+public class Shape {
+
+    private String color;
+    private boolean filled;
+public Shape(){}
+
+    public Shape(String color, boolean filled) {
+        this.color = color;
+        this.filled = filled;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public boolean isFilled() {
+        return filled;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setFilled(boolean filled) {
+        this.filled = filled;
+    }
+
+    @Override
+    public String toString() {
+        return "Shape{" +
+                "color='" + color + '\'' +
+                ", filled=" + filled +
+                '}';
+    }
+}
+----------------------------------------------
+public class Circle extends Shape {
+
+    private double radius=1.0;
+
+    public Circle(){}
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public Circle(String color, boolean filled, double radius) {
+        super(color, filled);
+        this.radius = radius;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public double getArea(){
+       double area= Math.PI*radius*radius;
+        System.out.println("Circle Area: "+area);
+
+        return area;
+    }
+
+    public double getPerimeter(){
+     double per=Math.PI*radius*2;
+        System.out.println("Circle Perimeter: "+per);
+        return per;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "radius=" + radius +
+                '}';
+    }
+}
+------------------------------------------
+public class Rectangle extends Shape {
+    private double width=1.0;
+    private double length=1.0;
+
+
+    public Rectangle(){}
+    public Rectangle(double width){
+        this.width=width;
+    }
+    public Rectangle(double width, double length) {
+        this.width = width;
+        this.length = length;
+    }
+    public Rectangle(String color, boolean filled, double width) {
+        super(color, filled);
+        this.width = width;
+        this.length = length;
+    }
+    public Rectangle(String color, boolean filled, double width, double length) {
+        super(color, filled);
+        this.width = width;
+        this.length = length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public double getArea(){
+      double area=length*width;
+        System.out.println("Rectangle Area:"+area);
+
+    return area;}
+
+    public double getPerimeter(){
+     double per =2*length+2*width;
+        System.out.println("Rectangle Perimeter: "+per);
+
+   return per;}
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "width=" + width +
+                ", length=" + length +
+                '}';
+    }
+}
+-----------------------------------------------------
+public class Square extends Rectangle {
+    public Square() {
+    }
+    public Square(double side) {
+    }
+    public Square(String color, boolean filled, double side) {
+        super(color, filled,side);
+    }
+    public void setSide(double width) {
+
+        super.setWidth(width);
+    }
+    public double getSide() {
+
+        return super.getWidth();
+    }
+
+    public double getArea(){
+        double area=getWidth()*getWidth();
+        System.out.println("square Area: "+area);
+        return area ;}
+
+
+    public double getPerimeter(){
+        double per=getWidth()*4;
+        System.out.println("Square Perimeter: "+per);
+
+        return per;}
+
+
+    @Override
+    public String toString() {
+        return "Square{}";
+    }
+
+}
