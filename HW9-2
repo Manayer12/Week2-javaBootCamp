@@ -1,0 +1,78 @@
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+public class Main {
+    public static void main(String[] args) {
+  MovablePoint mp1=new MovablePoint(66,30,20,15);
+        mp1.moveUp();
+        System.out.println();
+        mp1.moveDown();
+        System.out.println();
+        mp1.moveLeft();
+        System.out.println();
+        mp1.moveRight();
+  //System.out.println(mp1.toString());
+    }
+}
+-----------------------------------------
+public interface Movable {
+
+    public void moveUp();
+    public void moveDown();
+    public void moveLeft();
+    public void moveRight();
+
+}
+-----------------------------------------
+public class MovablePoint implements Movable {
+
+    private int x;
+    private int y;
+    private int xSpeed;
+    private int ySpeed;
+
+    public MovablePoint(int x, int y, int xSpeed, int ySpeed) {
+        this.x = x;
+        this.y = y;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+    }
+
+    @Override
+    public void moveUp() {
+        y-=ySpeed;
+        System.out.println("Y="+y);
+
+    }
+
+    @Override
+    public void moveDown() {
+        y+=ySpeed;
+        System.out.println("Y="+y);
+
+    }
+
+    @Override
+    public void moveLeft() {
+        x-=xSpeed;
+        System.out.println("X="+x);
+
+    }
+
+    @Override
+    public void moveRight() {
+        x+=xSpeed;
+        System.out.println("X="+x);
+
+
+    }
+
+    @Override
+    public String toString() {
+        return "MovablePoint{" +
+                "x=" + x +
+                ", y=" + y +
+                ", xSpeed=" + xSpeed +
+                ", ySpeed=" + ySpeed +
+                '}';
+    }
+}
