@@ -1,0 +1,106 @@
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+public class Main {
+    public static void main(String[] args) {
+        Movie m1=new Movie("Murder mystery",150,"jeremy garelick");
+        m1.gitDiscount();
+
+        Movie m2=new Movie("Smile",350,"parker finn");
+        m2.gitDiscount();
+
+        System.out.println();
+
+        Book b1=new Book("أقوم قيلا",100,"Sultan almousa");
+        b1.gitDiscount();
+
+        Book b2=new Book("Rich dad Poor dad",120,"robert kiyosaki");
+        b2.gitDiscount();
+
+
+
+
+    }
+}
+------------------------------------------------
+public abstract class Product {
+    private String name;
+    private double price;
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public abstract double gitDiscount();
+}
+-------------------------------------------
+public class Movie extends Product
+{
+    private String Director;
+
+    public Movie(String name, double price, String Director) {
+        super(name, price);
+        this.Director = Director;
+    }
+
+    public String getAuthor() {
+        return Director;
+    }
+
+    public void setAuthor(String author) {
+        this.Director = author;
+    }
+
+    @Override
+    public double gitDiscount() {
+        int discount=10;
+
+       double finalprice= getPrice()*discount/100;
+       finalprice=getPrice()-finalprice;
+
+        System.out.println("the movie price after discount:"+finalprice);
+        return finalprice;
+    }
+}
+-------------------------------------------
+public class Book extends Product{
+private String author;
+
+    public Book(String name, double price, String author) {
+        super(name, price);
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    @Override
+    public double gitDiscount() {
+        int discount=15;
+        double finalprice= getPrice()*discount/100;
+        finalprice=getPrice()-finalprice;
+        System.out.println("the Book price after discount:"+finalprice);
+        return finalprice;
+    }
+}
+
