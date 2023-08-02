@@ -1,5 +1,4 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
 public class Main {
     public static void main(String[] args) {
   MovablePoint mp1=new MovablePoint(66,30,20,15);
@@ -10,7 +9,6 @@ public class Main {
         mp1.moveLeft();
         System.out.println();
         mp1.moveRight();
-  //System.out.println(mp1.toString());
     }
 }
 -----------------------------------------
@@ -39,14 +37,14 @@ public class MovablePoint implements Movable {
 
     @Override
     public void moveUp() {
-        y-=ySpeed;
+        y+=ySpeed;
         System.out.println("Y="+y);
 
     }
 
     @Override
     public void moveDown() {
-        y+=ySpeed;
+        y-=ySpeed;
         System.out.println("Y="+y);
 
     }
