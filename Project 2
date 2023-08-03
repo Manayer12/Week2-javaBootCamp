@@ -1,0 +1,260 @@
+//Main
+public class Main {
+    public static void main(String[] args) {
+        Route r1=new Route("as123 Street ","NY Down Town",600);
+        Route r2=new Route("da342 Street","DC washington",300);
+        Route r3=new Route("T1 Street","alula",800);
+try {
+
+    Car c1 = new Car("152 DNS", r1, 6);
+    Car c2 = new Car("157 SAA", r2, 3);
+    Car c3=new Car("965 HTR",r3,0);
+    //when the capacity = 0 , the program show my exception ,and then stopped,but if I remove the 0 my program will work perfectly
+
+    c1.checkCapacity();
+    c2.checkCapacity();
+    c3.checkCapacity();
+
+
+
+    Passengers p1 = new Subscribers("12", "ahmad", c1 );
+    Passengers p2 = new NonSubscribers("19", "saad", c2, true);
+    Passengers p3=new NonSubscribers("24","mnayer",c3,false);
+
+    Passengers[] pass = {p1, p2,p3};
+
+
+    System.out.println();
+    p1.reserve();
+    pass[0].desplay();
+    System.out.println("---------------------------");
+
+    p2.reserve();
+    pass[1].desplay();
+    System.out.println("---------------------------");
+
+    p3.reserve();
+    pass[2].desplay();
+
+}catch (Exception e1){
+    System.out.println(e1.getMessage());
+}
+
+
+
+
+    }
+    }
+-----------------------------------------------------------------
+//Route
+public class Route   {
+
+    private String pickUpAdress;
+    private String destination;
+    private   int tripPrice;
+
+    public Route(String pickUpAdress, String destination, int tripPrice) {
+        this.pickUpAdress = pickUpAdress;
+        this.destination = destination;
+        this.tripPrice=tripPrice;
+    }
+
+    public String getPickUpAdress() {
+        return pickUpAdress;
+    }
+
+    public void setPickUpAdress(String pickUpAdress) {
+        this.pickUpAdress = pickUpAdress;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public int getTripPrice() {
+        return tripPrice;
+    }
+
+    public void setTripPrice(int tripPrice) {
+        this.tripPrice = tripPrice;
+    }
+}
+--------------------------------------------------------
+//CAR
+public class Car {
+    public String code;
+    public Route route;
+    public int maxcapacity;
+
+    public void checkCapacity()throws Exception{
+        if(maxcapacity==0){
+            throw new Exception("Max capacity = 0,please check again");
+        }}
+
+
+    public Car(String code, Route route, int maxcapacity) {
+        this.code = code;
+        this.route = route;
+        this.maxcapacity = maxcapacity;
+    }
+
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
+    public int getMaxcapacity() {
+        return maxcapacity;
+    }
+
+    public void setMaxcapacity(int maxcapacity) {
+        this.maxcapacity = maxcapacity;
+    }
+}
+----------------------------------------------------
+//Passengers
+public abstract class Passengers {
+    private String id;
+    private String name;
+    private Car Car;
+    public double tripCost;
+
+    public Passengers(String id, String name, Car car) {
+        this.id = id;
+        this.name = name;
+        Car = car;
+        this.tripCost = tripCost;
+    }
+
+    public abstract void reserve();
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Car getCar() {
+        return Car;
+    }
+
+    public void setCar(Car car) {
+        Car = car;
+    }
+
+    public double getTripCost() {
+        return tripCost;
+    }
+
+    public void setTripCost(double tripCost) {
+        this.tripCost = tripCost;
+    }
+
+
+    public abstract void desplay();
+}
+
+------------------------------------------------------
+//Subscribers
+public class Subscribers extends Passengers{
+
+
+
+    public Subscribers(String id, String name, Car car) {
+        super(id, name, car);
+    }
+
+        @Override
+        public void reserve () {
+        System.out.println("You are subscribed you will get 50% discount");
+        tripCost = getCar().getRoute().getTripPrice() * 0.5;
+
+    }
+
+
+
+    @Override
+    public void desplay() {
+
+        System.out.println("your car reserved");
+        System.out.println("car code: "+getCar().getCode()+"\n"+"Route price: "+tripCost);
+
+    }
+
+
+
+
+
+
+}
+
+----------------------------------------------------------------
+//NonSubscribers
+public class NonSubscribers extends Passengers{
+    public boolean coupon;
+
+    public NonSubscribers(String id, String name, Car car,  boolean coupon) {
+        super(id, name, car);
+        this.coupon = coupon;
+    }
+
+    @Override
+    public void reserve() {
+
+         if(coupon==true) {
+             System.out.println("your coupon discount is 10%");
+            tripCost = getCar().getRoute().getTripPrice()-getCar().getRoute().getTripPrice() * 0.1;
+        }else{
+             System.out.println("there is no coupon");
+
+             tripCost=getCar().getRoute().getTripPrice();
+
+        }
+
+
+    }
+
+    @Override
+    public void desplay() {
+
+        System.out.println("your car reserved");
+        System.out.println("car code: "+getCar().getCode()+"\n"+"Route price: "+tripCost);
+
+    }
+
+    public boolean isCoupon() {
+        return coupon;
+    }
+
+    public void setCoupon(boolean coupon) {
+        this.coupon = coupon;
+    }
+}
+
